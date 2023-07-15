@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .photo {
+        length: 200px;
+        width: 200px;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>anuraganandworks Pvt. Ltd.</h1>
+
+    <button id="watch">See work</button>
+    <button id="stop">Stop</button>
+    <button id="bg">Change BgColor</button>
+    <p class="para"></p>
+    <img src="model1.jpeg" class="photo" />
+  </body>
+  <script>
+    // setInterval,setTimeout k under pass hoga handler , handler ek
+    // functiuon hai jiska naam nhi hota
+
+    // setTimeout(function () {
+    //   console.log("Products built by Anurag Anand");
+    // }, 5000);
+
+    // or by this way
+
+    const printInfo = function () {
+      console.log("Anurag Anand's collection");
+    };
+    setTimeout(printInfo, 3000);
+    // const sayName = function () {
+    //   document.querySelector("h1").innerHTML = "aaw Pvt. Ltd.";
+    // };
+    // setTimeout(sayName, 3000);
+
+    // document.querySelector("#stop").addEventListener("click", function () {
+    //   clearInterval(stop);
+    // });
+
+    // const show = function () {
+    //   document.querySelector(".para").innerHTML = "Works are here";
+    // };
+    // const s = function () {
+    //   setInterval(show, 2000);
+    // };
+
+    const hex = "0123456789ABCDEF";
+    // javascript mein string mein bhi  position hota hai just like array
+    function backColor() {
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color = color + hex[Math.floor(Math.random() * 16)];
+        // color = color + 0;
+      }
+      console.log(hex[Math.floor(Math.random() * 16)]);
+      console.log(color);
+      return color;
+    }
+    let s;
+    const start = function () {
+      const bg = function () {
+        document.body.style.backgroundColor = backColor();
+      };
+      s = setInterval(bg, 1000);
+    };
+    document.querySelector("#bg").addEventListener("click", start);
+
+    function sstop() {
+      clearInterval(s);
+    }
+    document.querySelector("#stop").addEventListener("click", sstop);
+  </script>
+</html>

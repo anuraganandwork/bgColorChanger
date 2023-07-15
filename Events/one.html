@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Html events</title>
+    <style>
+      body {
+        background-color: rgb(89, 85, 85);
+        color: antiquewhite;
+      }
+      .photos {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Amazing Images</h2>
+    <ul class="images">
+      <li>
+        <img
+          class="photos"
+          id="OneGirl"
+          width="200px"
+          src="https://images.pexels.com/photos/4458421/pexels-photo-4458421.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Image 1"
+        />
+      </li>
+      <li>
+        <img
+          class="photos"
+          id="Group"
+          width="200px"
+          src="https://images.pexels.com/photos/5935239/pexels-photo-5935239.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Image 2"
+        />
+      </li>
+      <li>
+        <img
+          class="photos"
+          id="OneBoy"
+          width="200px"
+          src="https://images.pexels.com/photos/5996855/pexels-photo-5996855.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="image 3"
+        />
+      </li>
+      <li>
+        <img
+          class="photos"
+          id="Timepass"
+          height="133.3px"
+          width="200px"
+          src="https://images.pexels.com/photos/9017641/pexels-photo-9017641.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Image 4"
+        />
+      </li>
+    </ul>
+    <p class="para"></p>
+  </body>
+  <script>
+    const grp = document.getElementById("Group");
+    const txt = document.querySelector(".para");
+    const art = document.querySelector("#Timepass");
+    const girl = document.querySelector("#OneGirl");
+    grp.addEventListener(
+      "mouseover",
+      function (e) {
+        giveText("Image no. 2 is clicked");
+      },
+      false
+
+      // event bubbling
+      //       In this case:
+
+      // the click on the button fires first
+      // followed by the click on its parent (the <div> element)
+      // followed by the <div> element's parent (the <body> element).
+      // We describe this by saying that the event bubbles up from the
+      // innermost element that was clicked.
+
+      // This behavior can be useful and can also cause unexpected problems.
+      //  In the next sections, we'll see a problem that it causes, and find the solution.
+    );
+    function giveText(message) {
+      txt.innerHTML = ` ${message}`;
+      // grp.clientHeight = "200px";
+      document.body.style.backgroundColor = "Black";
+    }
+
+    art.addEventListener(
+      "mouseover",
+      function (s) {
+        changeBackgroundColor();
+      },
+      false
+    );
+
+    function changeBackgroundColor() {
+      art.style.backgroundColor = "red";
+    }
+
+    // document.querySelector(".images").addEventListener("click", function (e) {
+    //   let removeIt = e.target.parentNode;
+    //   removeIt.remove();
+
+    //  e.target gives us the target jaha pe event pe occur ho rha hai
+
+    document.querySelector("#OneGirl").addEventListener("click", function (E) {
+      girl.style.backgroundColor = "yellow";
+    });
+  </script>
+</html>
